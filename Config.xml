@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>NCIP Server Addon</Name>
+  <Author>Austin Smith</Author>
+  <Version>1.0.3</Version>
+  <Active>False</Active>
+  <Type>Server</Type>
+  <Description>This system level addon allows for ILLiad to communicate with Aleph via NCIP protocol.</Description>
+  <Forms />
+  <Permissions />
+  <Settings>
+    <Setting name="NCIPResponderURL" value="https://[your URL]/ncip" type="string">
+      <Description>URL or IP address for the NCIP Responder.</Description>
+    </Setting>
+    <Setting name="AcceptItemSuccessQueue" value="Checked Out to Customer" type="string">
+      <Description>The name of the queue a transaction should be routed to after an Aleph record has been created.</Description>
+    </Setting>
+    <Setting name="AcceptItemFailQueue" value="NCIP Error - Unable to Create Record" type="string">
+      <Description>The name of the queue a transaction should be routed to if an Aleph record would not be created.</Description>
+    </Setting>
+    <Setting name="AlephItemBarcodeField" value="ItemInfo4" type="string">
+      <Description>Name of the field in the Transactions table where the item's Aleph barcode will be stored. Optional.</Description>
+    </Setting>
+    <Setting name="CreateHoldRequest" value="true" type="boolean">
+      <Description>Determines whether or not hold requests should be placed on Aleph records.</Description>
+    </Setting>
+    <Setting name="ProcessLibraryUseOnly" value="false" type="boolean">
+      <Description>Determines whether or not Aleph records will be created for Library Use Only items.</Description>
+    </Setting>
+    <Setting name="ILLiadLocationTable" value="User" type="string">
+      <Description>Table from which the ILLiad pickup location will be drawn.</Description>
+    </Setting>
+    <Setting name="ILLiadLocationField" value="NVGTC" type="string">
+      <Description>Field from which the ILLiad pickup location will be drawn.</Description>
+    </Setting>
+    <Setting name="ILLiadLocationCodes" value="ILL, STEM, DEPT, PAL, SHADY" type="string">
+      <Description>Comma-separated list of NVTGC codes in use on this server (either for shared server support, or for sites with multiple pickup locations)</Description>
+    </Setting>
+    <Setting name="AlephLocationCodes" value="CPMCK, CPENG, CPDEL, CPPAL, CPSG" type="string">
+      <Description>Comma-separated list of Aleph pickup locations. Must correspond to the list given in ILLiadLocationCodes</Description>
+    </Setting>
+    <Setting name="UserPrefixes" value="CP-, CP-, CP-, CP-, CP-" type="string">
+      <Description>Comma-separated list of Aleph local user ID prefixes. Must correspond to the list given in ILLiadLocationCodes</Description>
+    </Setting>
+    <Setting name="Sublibraries" value="CPMCK, CPMCK, CPMCK, CPMCK, CPMCK" type="string">
+      <Description>Comma-separated list of Aleph sublibrary codes. Must correspond to the list given in ILLiadLocationCodes</Description>
+    </Setting>
+    <Setting name="ItemBarcodePrefixes" value="CPILL, CPILL, CPILL, CPILL, CPILL" type="string">
+      <Description>Comma-separated list of item barcode prefixes. Must correspond to the list given in ILLiadLocationCodes</Description>
+    </Setting>
+    <Setting name="UseItemBarcodePrefixes" value="true" type="boolean">
+      <Description>Determines whether or not item barcode prefixes will be applied.</Description>
+    </Setting>
+
+  </Settings>
+  <Files>
+    <File>NCIP.lua</File>
+    <File>AtlasHelpers.lua</File>
+  </Files>
+</Configuration>
